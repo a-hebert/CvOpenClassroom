@@ -1,0 +1,227 @@
+:root{ --maincolor: #b1bfe4; }
+*{ margin: 0; padding: 0; }
+
+body {
+    display: grid;
+    grid-template: 
+        "header" auto 
+        "presentation" auto  
+        "experiences" auto   
+        "diplomes" auto   
+        "skills" auto   
+        "footer" auto   
+        / 1fr ;
+}
+
+#experiences {
+    grid-area: experiences;
+}
+
+#diplomes {
+    grid-area: diplomes;
+}
+#skills {
+    grid-area: skills;
+}
+
+/* HEADER */
+header {
+    grid-area: header;
+    display: grid;
+    grid-template: 
+        "name" auto 
+        "job" auto  
+        "pict" auto   
+        / 1fr ;
+}
+header h1 {
+    grid-area: name;
+    color: var(--maincolor);
+    font-weight: bold;
+    font-size: 2.1rem;
+}
+header h2 {
+    grid-area: job;
+    font-size: 1.2rem;
+}
+header a {
+    grid-area: pict;
+    text-align: center;
+}
+header img.mini{
+    width: 6rem;
+    padding: 1rem 3rem ;
+}
+
+/* SECTION */
+section, header
+{
+    padding: 1rem 2rem ;
+}
+section > h1, section hr{
+    color: var(--maincolor);
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+}
+section article {
+    /* border: 1px solid red; */
+}
+article h1
+{
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: .7rem 0;
+    text-decoration: underline;
+}
+article h2
+{
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: .7rem 0;
+}
+article > span
+{
+    font-weight: 700;
+}
+article ul
+{
+    padding-left: 1.3rem;
+}
+
+/* PRESENTATION */
+#presentation{
+    grid-area: presentation;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--maincolor);
+}
+#presentation aside{
+    display: flex;
+    flex-direction: column;
+    margin: .4rem 1rem ;
+}
+#presentation aside span{
+    margin: .2rem 0;
+}
+#presentation .link-logo{
+    height: 1.2rem;
+    margin-right: .5rem;
+    color: black;
+}
+
+/* SKILLS */
+.skils-wrapper{
+    border-left: .5rem solid var(--maincolor);
+    padding-left: 1rem;
+}
+#skills h3 {
+    color: var(--maincolor);
+    margin-bottom: .5rem;
+    /* font-size: .9rem; */
+}
+#skills h4 {
+    /* font-size: .8rem; */
+    font-weight: bold;
+    margin-top: .5rem;
+    margin-bottom: .1rem;
+    padding-left: .5rem;
+}
+#skills p {
+    /* font-size: .7rem; */
+    margin-bottom: .1rem;
+    padding-left: 1rem;
+}
+#skills > hr {
+    margin: 2rem 0;
+}
+
+footer{
+    grid-area: footer;
+    text-align: center;
+    font-size: .8rem;
+    background-color: var(--maincolor);
+    color: whitesmoke;
+    padding: .6rem;
+
+}
+
+
+@media all and (min-width: 900px){
+    body {
+        grid-template: 
+            "header header" auto  
+            "presentation presentation" auto   
+            "experiences skills" auto    
+            "diplomes skills" auto    
+            "footer footer" auto    
+            / 1fr auto ;
+    }
+    header { 
+        grid-template: 
+        "name pict" auto 
+        "job pict" auto 
+        / 1fr auto ;
+    }
+
+    #presentation {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+    #presentation article{
+        width: 40%;
+        line-height: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+    #presentation aside {
+        padding: initial;
+    }
+    .skils-wrapper{
+        border: none;
+        margin: 1rem 2rem 0 0;
+    }
+   
+
+}
+
+/* MENU */
+#burger-check { display: none; }
+#burger {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-end;
+    justify-content: center;
+    border: 2px solid white;
+    background-color: var(--maincolor);
+    border-radius:   0 0 0 1rem ;
+    padding: .5rem;
+    cursor: pointer;
+}
+#burger > img{
+    height: 2em;
+    margin: .5em;
+}
+#burger > nav  {
+    font-size: 0;
+    transition:  .4s;
+}
+#burger-check:checked + label > nav  {
+    font-size: 1.2em;
+}
+#burger ul  {
+    padding: 0;
+    list-style-type: none;
+    margin: 0 .1rem .2em 0;
+}
+#burger li  {
+    padding: .2em .5em;
+}
+#burger a {
+    text-decoration: none;
+    color: var(--white-color);
+}
